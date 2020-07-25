@@ -260,3 +260,7 @@ node_modules
 psd
 thumb
 sketch
+
+.gitignore
+db.sqlite3
+migrations/
