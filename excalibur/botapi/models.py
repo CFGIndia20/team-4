@@ -20,8 +20,8 @@ def upload_location(instance, filename):
 
 class Complaint(models.Model):
     track_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    username = models.CharField(max_length = 255)
-    phonenumber = models.CharField(max_length = 15)
+    username = models.CharField(max_length = 255, default=None)
+    phonenumber = models.CharField(max_length = 15, default=None)
     timestamp = models.DateTimeField(auto_now_add=True)
     location = models.TextField()
     description = models.TextField()

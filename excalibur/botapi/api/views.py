@@ -15,6 +15,8 @@ from .serializers import (
     ComplaintDetailSerializer, ComplaintListSerializer, CategoryListSerializer
 )
 from botapi.models import Complaint, Category
+from rest_framework import status
+from rest_framework.views import APIView
 
 class ComplaintDetailView(RetrieveAPIView):
     queryset = Complaint.objects.all()
@@ -23,8 +25,8 @@ class ComplaintDetailView(RetrieveAPIView):
     search_fields = ['track_id', 'username', 'phonenumber','timestamp', 'location', 'description','category','category_id', 'source', 'image']
 
 class ComplaintListView(ListAPIView):
-    serializer_class  = ComplaintListSerializer
-    queryset = Complaint.objects.all()
-    filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ['track_id', 'username', 'phonenumber','timestamp', 'location', 'description','category','category_id', 'source', 'image']
-    permission_class = [AllowAny]
+        serializer_class  = ComplaintListSerializer
+        queryset = Complaint.objects.all()
+        filter_backends = [SearchFilter, OrderingFilter]
+        search_fields = ['track_id', 'username', 'phonenumber','timestamp', 'location', 'description','category','category_id', 'source', 'image']
+        permission_class = [AllowAny]
