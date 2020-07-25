@@ -17,6 +17,10 @@ numpy = "*"
 pandas = "*"
 nltk = "*"
 scikit-learn = "*"
+<<<<<<< HEAD
+>>>>>>> master
+=======
+pillow = "*"
 >>>>>>> master
 
 [requires]

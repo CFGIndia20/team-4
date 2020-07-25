@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('botapi/', include('botapi.urls')),
+    path('api/botapi/', include('botapi.api.urls', namespace='botapi-api'))
 ]
