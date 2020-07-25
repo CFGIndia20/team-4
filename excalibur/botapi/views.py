@@ -9,6 +9,10 @@ from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 from .env import ACCOUNT_SID, AUTH_TOKEN 
 
+
+greetings = [
+    'hi', 'hello', 'hey', 'heya', 'good morning'
+]
 # Create your views here.
 def index(request):
     return Response({'index' : 'works'}, status=status.HTTP_200_OK)
@@ -22,21 +26,48 @@ class WhatsappBot(APIView):
         Captures user message and replies with a response.
     """
     def get(self, request, format=None):
-        pass
+        """
+            GET method not allowed
+        """
+        return Response({'detail' : 'get method not allwoed'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
     def post(self, request, format=None):
-        print(request.data['Body'])
+        """
+            POST method for recieving the query
+            return type: Http response
+        """
+        # print(request.data['Body'])
         
+        # Reading user query
+        description = request.data['Body']
+        user_phone_number = request.data['From'].split(':')[1]
+
+        # print(user_phone_number)
+
         response = MessagingResponse()
         msg = response.message("Hello world!")
         
         client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
-        message = client.messages.create(
-            body='Hello there!',
-            from_='whatsapp:+14155238886',
-            to='whatsapp:+919920583257'
-        )
+        # A basic logic for the reply to user
+        if request.data['Body'].lower() in greetings and len(description) <= 10:
+            message = client.messages.create(
+                body='Hello there! Hope you are having a good day.\nPlease post your complain here or logon to https://www.ichangemycity.com/.',
+                from_=request.data['To'],
+                to=request.data['From']
+            )
 
-        print(message)
+            return HttpResponse(str(msg))
+        
+        else:
+            message = client.messages.create(
+                body='Thank you for posting the complain. We will get back to you. For more details visit https://www.ichangemycity.com/. Hope you have an amazing day ahead!',
+                from_=request.data['To'],
+                to=request.data['From']
+            )
+
+            return HttpResponse(str(msg))
+
+
+        # print(message)
         return HttpResponse(str(msg)) 
