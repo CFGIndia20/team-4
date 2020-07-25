@@ -29,7 +29,7 @@ class ComplaintDetailSerializer(serializers.ModelSerializer):
         ]
 
 class ComplaintListSerializer(serializers.ModelSerializer):
-    # url = serializers.HyperlinkedIdentityField(view_name = 'botapi-api:detail')
+    url = serializers.HyperlinkedIdentityField(view_name = 'botapi-api:detail')
 
     class Meta:
         model = Complaint
@@ -41,7 +41,7 @@ class ComplaintListSerializer(serializers.ModelSerializer):
         'location',
         'description',
         'category',
-        'category_id',
+        # 'category_id',
         'source',
         'image'
         ]
