@@ -6,7 +6,7 @@ from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import LinearSVC
-from sklearn.pipeline import Pipeline
+# from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectKBest, chi2
 
@@ -49,3 +49,31 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 print(confusion_matrix(y_test,y_pred))
 print(classification_report(y_test,y_pred))
 print(accuracy_score(y_test, y_pred))
+
+def preprocessData(descp):
+    # Stopwords removed
+    descp = descp.apply(lambda x: " ".join([stemmer.stem(i) for i in re.sub("[^a-zA-Z]", " ", str(x)).split() if i not in words]).lower())
+    
+    # Words to bag
+    vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
+    X = vectorizer.fit_transform(descp).toarray()
+    
+    # Tfid Convertor
+    tfidfconverter = TfidfTransformer()
+    X = tfidfconverter.fit_transform(X).toarray()
+    
+    return X
+
+def predictClass(x_pred):
+    return classifier.predict(X_test)
+
+# 
+# function textClassifier
+# @param(descp) : str, descprition of the user complaint
+# Return - category id
+def textClassifier(descp):
+    """
+        Predicts category from description
+    """
+    processedDescp = preprocessData(descp=str(descp))
+    return int(predictClass(processedDescp))

@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 djangorestframework = "*"
 twilio = "*"
+requirements-txt = "*"
 
 [requires]
 python_version = "3.7"
