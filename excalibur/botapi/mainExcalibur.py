@@ -5,6 +5,7 @@ storing it in db,
 and returning a track id and url.
 """
 from name_add_desc_separator import BreakDown
+from textClassification import textClassifier
 
 """
     method mainExcalibur
@@ -15,8 +16,12 @@ def mainExcalibur(para, timestamp=None, source=None, phone_number=None, username
     """
         Takes the input from different sources, stores it and returns the track id and url.
     """
-    name, location, descp = BreakDown(text=para)
-    print(name, location, descp)
+    l = BreakDown(text=para)
+    name = l[0]
+    location = l[1]
+    descp = l[2]
+    category = textClassifier(descp)
+
     return {'id': 'id', 'url': 'url'}
 
-mainExcalibur('hi i am john doe. A tree near 23rd Street Bandra, Mumbai, MH 400001 has fallen.')
+mainExcalibur('hi i am John Doe. A tree near 1245 22nd street Bandra, Mumbai, MH 400001 has fallen.')

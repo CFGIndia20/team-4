@@ -9,7 +9,15 @@ verify_ssl = true
 django = "*"
 djangorestframework = "*"
 twilio = "*"
+<<<<<<< HEAD
 nameparser = "*"
+=======
+requirements-txt = "*"
+numpy = "*"
+pandas = "*"
+nltk = "*"
+scikit-learn = "*"
+>>>>>>> master
 
 [requires]
 python_version = "3.7"
