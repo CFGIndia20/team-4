@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from twilio.twiml.messaging_response import MessagingResponse
+from twilio.rest import Client
 
 # Create your views here.
 def index(request):
@@ -23,8 +24,6 @@ class WhatsappBot(APIView):
 
     def post(self, request, format=None):
         print(request.data['Body'])
-        # print(request.body)
-        # print(request.post)
         
         response = MessagingResponse()
         msg = response.message("Hello world!")
