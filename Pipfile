@@ -9,6 +9,11 @@ verify_ssl = true
 django = "*"
 djangorestframework = "*"
 twilio = "*"
+requirements-txt = "*"
+numpy = "*"
+pandas = "*"
+nltk = "*"
+scikit-learn = "*"
 
 [requires]
 python_version = "3.7"
