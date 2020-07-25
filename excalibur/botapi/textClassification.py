@@ -30,7 +30,9 @@ print(data['cleaned'].head(5))
 
 # Word Vectorization
 from sklearn.feature_extraction.text import CountVectorizer
-vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
+# min_df=5, max_df=0.7,
+# max_features=100, min_df=1, max_df=7,stop_words=stopwords.words('english')
+vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(data['cleaned']).toarray()
 
 tfidfconverter = TfidfTransformer()
@@ -60,12 +62,12 @@ def preprocessData(descp):
     """
     # Stopwords removed
     # descp = descp.apply(lambda x: " ".join([stemmer.stem(i) for i in re.sub("[^a-zA-Z]", " ", str(x)).split() if i not in words]).lower())
-    descp = [w.lower() for w in descp.split() if w not in words]
+    descp = " ".join([w.lower() for w in descp.split() if w not in words])
     
     # Words to bag
-    vectorizer = CountVectorizer(max_features=1500, min_df=1, max_df=0.7, stop_words=stopwords.words('english'))
+    # vectorizer = CountVectorizer(max_features=1500, min_df=1, max_df=0.7, stop_words=stopwords.words('english'))
     # vectorizer = TfidfVectorizer(min_df=1, max_df=1, stop_words=stopwords.words('english'))
-    X = vectorizer.fit_transform(descp).toarray()
+    X = vectorizer.transform([descp]).toarray()
     
     # Tfidf Convertor
     tfidfconverter = TfidfTransformer()
