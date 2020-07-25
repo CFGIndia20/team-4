@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
-from .env import ACCOUNT_SID, AUTH_TOKEN 
+from .env import ACCOUNT_SID, AUTH_TOKEN
 
 
 greetings = [
@@ -71,3 +71,4 @@ class WhatsappBot(APIView):
 
         # print(message)
         return HttpResponse(str(msg)) 
+

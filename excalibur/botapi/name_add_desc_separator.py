@@ -6,6 +6,7 @@ Created on Sat Jul 25 23:27:01 2020
 """
 def BreakDown(text):
     import nltk
+    nltk.download('punkt')
     from nameparser.parser import HumanName
     import re
     
