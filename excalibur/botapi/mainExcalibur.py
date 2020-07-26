@@ -4,11 +4,11 @@ Contains the logic for taking input from different sources,
 storing it in db,
 and returning a track id and url.
 """
-from name_add_desc_separator import BreakDown
-from textClassification import textClassifier
+from .name_add_desc_separator import BreakDown
+from .textClassification import textClassifier
 # from .models import Complaint
 # from .api.serializers import ComplaintListSerializer
-from categories import category
+from .categories import category
 import json
 import requests
 from datetime import datetime
@@ -39,8 +39,8 @@ def mainExcalibur(para, timestamp=None, source="WH", phone_number=None, username
     x = requests.post(url, data = json.dumps(data), headers = {'Content-Type' : 'application/json'})
     
     x = x.json()
-
+    # return "Thank you for posting the complain. Your complaint id is `x` {}. Your complaint id is For more details visit {}.".format(str(x["track_id"]), str(x["url"]))
     return {'id': x['track_id'], 'url': x['url']}
 
-x = mainExcalibur('hi i am John Doe. A tree near 1245 22nd street Bandra, Mumbai, MH 400001 has fallen.')
-print(x)
+# x = mainExcalibur('hi i am John Doe. A tree near 1245 22nd street Bandra, Mumbai, MH 400001 has fallen.')
+# print(x)
