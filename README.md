@@ -15,6 +15,19 @@ With the above information, the complaint is routed to the right officials. The 
 1. Django
 2. HTML, CSS, JS, Bootstrap
 3. Machine Learning, Natural Language Processing, Geotagging
+
+## Keyfeatures 
+1. WhatsappBot to register citizen complaint using Whatsapp
+2. TelegramBot to register citizen complaint using Telegram
+3. TwitterBot to register citizen complaint using Twitter
+4. Categorizing of data with 93% accuracy
+5. Location attraction from description
+6. Location Tagging using the metadata from twitter
+7. SMS to register citizen complaint
+8. PhoneCall to register citizen complaint
+9. Database to store real time data
+10. Frontend to display all the user complaints. 
+
 ## Solution
 We propose a diverse system that takes in citizen issues from various platforms and creates a centralised database. The different platfroms that we have aimed to cover in this project are :
 1. Whatsapp
