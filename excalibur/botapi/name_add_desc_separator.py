@@ -6,6 +6,10 @@ Created on Sat Jul 25 23:27:01 2020
 """
 def BreakDown(text):
     import nltk
+    nltk.download('punkt')
+    nltk.download('averaged_perceptron_tagger')
+    nltk.download('maxent_ne_chunker')
+    nltk.download('words')
     from nameparser.parser import HumanName
     import re
     

@@ -41,7 +41,7 @@ class ComplaintListSerializer(serializers.ModelSerializer):
         'location',
         'description',
         'category',
-        'category_id',
+        # 'category_id',
         'source',
         'image'
         ]

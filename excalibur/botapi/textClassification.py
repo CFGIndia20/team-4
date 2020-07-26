@@ -13,12 +13,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectKBest, chi2
 
 # Reading the models
-data = pd.read_csv('./cd_mumbai_complaints.csv')
-print(data['category_id'].isnull().sum())
+data = pd.read_csv('D:\\programs\\competitions\\JPMC-CFG20\\team-4\\excalibur\\botapi\\cd_mumbai_complaints.csv')
+# print(data['category_id'].isnull().sum())
 y = data['category_id'].values.astype(np.int64)
 z = data['sub_category_id']
 
-print(pd.DataFrame(y).info())
+# print(pd.DataFrame(y).info())
 
 # Preprocessing
 stemmer = SnowballStemmer('english')
@@ -46,7 +46,7 @@ from sklearn.linear_model import LogisticRegression
 classifier = LogisticRegression()
 classifier.fit(X_train, y_train) 
 
-print(classifier)
+# print(classifier)
 
 y_pred = classifier.predict(X_test)
 

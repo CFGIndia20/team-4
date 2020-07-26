@@ -7,7 +7,9 @@ from django.views.decorators.csrf import csrf_exempt
 
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
-from .env import ACCOUNT_SID, AUTH_TOKEN 
+from .env import ACCOUNT_SID, AUTH_TOKEN
+from .mainExcalibur import mainExcalibur
+from datetime import datetime
 
 
 greetings = [
@@ -25,6 +27,19 @@ class WhatsappBot(APIView):
     """
         Captures user message and replies with a response.
     """
+    
+    def sendReply(self, message, to, from_):
+        client = Client(ACCOUNT_SID, AUTH_TOKEN)
+        msg = client.messages.create(
+            body=message,
+            # body=str(msg_str),
+            # body = result,
+            from_=from_,
+            to=to
+        )
+
+        return msg
+
     def get(self, request, format=None):
         """
             GET method not allowed
@@ -60,14 +75,31 @@ class WhatsappBot(APIView):
             return HttpResponse(str(msg))
         
         else:
-            message = client.messages.create(
-                body='Thank you for posting the complain. We will get back to you. For more details visit https://www.ichangemycity.com/. Hope you have an amazing day ahead!',
-                from_=request.data['To'],
-                to=request.data['From']
+            result = mainExcalibur(
+                para=description,
+                source="WH",
+                phone_number=user_phone_number,
+                timestamp=datetime.now()
             )
-
+            print(result)
+            msg_str = "Thank you for posting the complain. Your complaint id is {}. Your complaint id is For more details visit {}.".format(str(result["id"]), str(result["url"]))
+            print(msg_str, type(msg_str))
+            temp = "Hello! Hello1"
+            print(type(temp))
+            # message = client.messages.create(
+            #     body="Thank you for posting your complain! We will get back to you shortly!",
+            #     # body=str(msg_str),
+            #     # body = result,
+            #     from_=request.data['To'],
+            #     to=request.data['From']
+            # )
+            # print(message)
+            message = self.sendReply("Thank you for posting your complain! We will get back to you shortly!", request.data['From'], request.data['To'])
+            # msg = response.message(str(msg_str))
             return HttpResponse(str(msg))
 
 
         # print(message)
         return HttpResponse(str(msg)) 
+
+
