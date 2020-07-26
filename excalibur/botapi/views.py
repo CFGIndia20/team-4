@@ -29,6 +29,9 @@ class WhatsappBot(APIView):
     """
 
     def sendReply(self, message, to, from_):
+        """
+            Generate the reply message for citizen
+        """
         client = Client(ACCOUNT_SID, AUTH_TOKEN)
         msg = client.messages.create(
             body=message,
@@ -38,6 +41,7 @@ class WhatsappBot(APIView):
             to=to
         )
 
+        print(msg)
         return msg
 
     def get(self, request, format=None):
@@ -82,20 +86,24 @@ class WhatsappBot(APIView):
                 timestamp=datetime.now()
             )
             print(result)
-            msg_str = "Thank you for posting the complain. Your complaint id is {}. Your complaint id is For more details visit {}.".format(str(result["id"]), str(result["url"]))
+            # msg_str = "Thank you for posting the complain. Your complaint id is {}. Your complaint id is For more details visit {}.".format(str(result["id"]), str(result["url"]))
+            msg_str = 'Thank you for posting the complain. Your complaint id is b3bff187-46c9-486f-9ab4-a4a805cde055. Your complaint id is For more details visit http://127.0.0.1:8000/api/botapi/detail/b3bff187-46c9-486f-9ab4-a4a805cde055'
             print(msg_str, type(msg_str))
             temp = "Hello! Hello1"
             print(type(temp))
-            # message = client.messages.create(
-            #     body="Thank you for posting your complain! We will get back to you shortly!",
-            #     # body=str(msg_str),
-            #     # body = result,
-            #     from_=request.data['To'],
-            #     to=request.data['From']
-            # )
-            # print(message)
-            message = self.sendReply("Thank you for posting your complain! We will get back to you shortly!", request.data['From'], request.data['To'])
+            message = client.messages.create(
+                body="Thank you for posting your complain! We will get back to you shortly!",
+                # body=str(msg_str),
+                # body = result,
+                from_=request.data['To'],
+                to=request.data['From']
+            )
+            import json
+            print("message : ", message.status)
+            message = self.sendReply(msg_str, request.data['From'], request.data['To'])
+            # print(message.body)
             # msg = response.message(str(msg_str))
+            msg = response.message(msg_str)
             return HttpResponse(str(msg))
 
 
