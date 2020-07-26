@@ -18,7 +18,7 @@ from datetime import datetime
     @params para, timestamp, source, phone_number, username
     return type dict({id, url})
 """
-def mainExcalibur(para, timestamp=None, source="WH", phone_number=None, username=None):
+def mainExcalibur(para, timestamp=datetime.now(), source="WH", phone_number=None, username=None):
     """
         Takes the input from different sources, stores it and returns the track id and url.
     """
@@ -32,8 +32,10 @@ def mainExcalibur(para, timestamp=None, source="WH", phone_number=None, username
         'location' : location,
         'description' : descp,
         'category' : str(category_id),
-        'timestamp' : str(datetime.now()),
+        'timestamp' : str(timestamp),
         'source' : source,
+        'phonenumber':str(phone_number),
+        'username' : username,
     }
     url = 'http://127.0.0.1:8000/api/botapi/post/'
     x = requests.post(url, data = json.dumps(data), headers = {'Content-Type' : 'application/json'})
