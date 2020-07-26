@@ -94,7 +94,7 @@ class WhatsappBot(APIView):
             #     to=request.data['From']
             # )
             # print(message)
-            message = self.sendReply(msg_str, request.data['From'], request.data['To'])
+            message = self.sendReply("Thank you for posting your complain! We will get back to you shortly!", request.data['From'], request.data['To'])
             # msg = response.message(str(msg_str))
             return HttpResponse(str(msg))
 
