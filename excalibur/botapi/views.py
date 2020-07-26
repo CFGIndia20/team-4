@@ -29,6 +29,9 @@ class WhatsappBot(APIView):
     """
     
     def sendReply(self, message, to, from_):
+        """
+            Generate the reply message for citizen
+        """
         client = Client(ACCOUNT_SID, AUTH_TOKEN)
         msg = client.messages.create(
             body=message,
