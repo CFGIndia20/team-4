@@ -11,7 +11,7 @@ import telegram,telebot
 from datetime import datetime
 
 #Token
-token='1315755832:AAGPopIslqbAk-3qRG_qGBBAju6IyJOaOPw'
+token=#token_value
 URL = "https://api.telegram.org/bot{}/".format(token)
 
 TelegramBot=telepot.Bot(token)
