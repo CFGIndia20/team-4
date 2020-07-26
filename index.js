@@ -13,11 +13,11 @@
                 
                 success: function(data){
                     console.log('hello',data);
-                    // for(u of data.result)
-                    // {
-                    // let newitem = newPostDom(u);
-                    // $('#post-container>Ol').prepend(newitem);
-                    // }
+                    for(u of data.results)
+                    {
+                    let newitem = newPostDom(u);
+                    $('#post-container>Ol').prepend(newitem);
+                    }
                   
                 }, error: function(error){
                     console.log(error.responseText);
@@ -32,7 +32,7 @@
         return $(`
 
     <li style="margin-bottom: 40px;">
-                    <table class="table table-hover table-dark" style="width:200%">
+                    <table class="table table-hover table-dark" style="width:160%">
                         <tr>
                         
                             <th>
