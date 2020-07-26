@@ -23,6 +23,11 @@ We propose a diverse system that takes in citizen issues from various platforms 
 4. SMS & Phone call
 
 Using the textual data, the three main categories : *'location'*, *'category'* and *'description'*.
+
+##### Links
+1. [Google Drive](https://drive.google.com/file/d/11kN5nLtoGAfoxbf6pIFkj3kKSkRMjsOB/view)
+2. [Youtube](https://youtu.be/GtkpMGtf_cg)
+
 ### Workflow
 1. The citizen posts/messages an issue.
 2. The name of the citizen and the location of the issue is extracted from the post/message.

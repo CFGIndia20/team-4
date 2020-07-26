@@ -17,6 +17,7 @@ nltk = "*"
 scikit-learn = "*"
 pillow = "*"
 django-twilio = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.7"

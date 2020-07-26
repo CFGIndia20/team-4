@@ -100,6 +100,10 @@ class WhatsappBot(APIView):
             )
             import json
             print("message : ", message.status)
+            for i in dir(message):
+                print(i, ": ", getattr(message, i))
+
+            # getattr(message,prop)
             message = self.sendReply(msg_str, request.data['From'], request.data['To'])
             # print(message.body)
             # msg = response.message(str(msg_str))
