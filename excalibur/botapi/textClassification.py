@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectKBest, chi2
 
 # Reading the models
-data = pd.read_csv('./cd_mumbai_complaints.csv')
+data = pd.read_csv('D:\\programs\\competitions\\JPMC-CFG20\\team-4\\excalibur\\botapi\\cd_mumbai_complaints.csv')
 # print(data['category_id'].isnull().sum())
 y = data['category_id'].values.astype(np.int64)
 z = data['sub_category_id']

@@ -16,6 +16,7 @@ pandas = "*"
 nltk = "*"
 scikit-learn = "*"
 pillow = "*"
+django-twilio = "*"
 
 [requires]
 python_version = "3.7"
