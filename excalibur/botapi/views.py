@@ -22,12 +22,12 @@ def index(request):
 #
 # Whatsapp Chat Bot API class
 # POST request API view.
-#   
+#
 class WhatsappBot(APIView):
     """
         Captures user message and replies with a response.
     """
-    
+
     def sendReply(self, message, to, from_):
         """
             Generate the reply message for citizen
@@ -55,7 +55,7 @@ class WhatsappBot(APIView):
             return type: Http response
         """
         # print(request.data['Body'])
-        
+
         # Reading user query
         description = request.data['Body']
         user_phone_number = request.data['From'].split(':')[1]
@@ -64,7 +64,7 @@ class WhatsappBot(APIView):
 
         response = MessagingResponse()
         msg = response.message("Hello world!")
-        
+
         client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
         # A basic logic for the reply to user
@@ -76,7 +76,7 @@ class WhatsappBot(APIView):
             )
 
             return HttpResponse(str(msg))
-        
+
         else:
             result = mainExcalibur(
                 para=description,
@@ -103,6 +103,4 @@ class WhatsappBot(APIView):
 
 
         # print(message)
-        return HttpResponse(str(msg)) 
-
-
+        return HttpResponse(str(msg))

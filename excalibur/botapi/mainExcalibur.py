@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Contains the logic for taking input from different sources, 
+Contains the logic for taking input from different sources,
 storing it in db,
 and returning a track id and url.
 """
@@ -43,7 +43,7 @@ def mainExcalibur(para, timestamp=datetime.now(), source="WH", phone_number=None
     }
     url = 'http://127.0.0.1:8000/api/botapi/post/'
     x = requests.post(url, data = json.dumps(data), headers = {'Content-Type' : 'application/json'})
-    
+
     x = x.json()
     # return "Thank you for posting the complain. Your complaint id is `x` {}. Your complaint id is For more details visit {}.".format(str(x["track_id"]), str(x["url"]))
     return {'id': x['track_id'], 'url': x['url']}
