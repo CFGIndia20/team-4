@@ -22,12 +22,16 @@ def mainExcalibur(para, timestamp=datetime.now(), source="WH", phone_number=None
     """
         Takes the input from different sources, stores it and returns the track id and url.
     """
+    # Extraction of location
     l = BreakDown(text=para)
     name = l[0]
     location = l[1]
     descp = l[2]
+
+    # Classifying into a category
     category_id = textClassifier(descp)
 
+    # Posting on DB
     data = {
         'location' : location,
         'description' : descp,
