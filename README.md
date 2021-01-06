@@ -68,3 +68,5 @@ Great! You have the django server up and running now!
 4. Extracting location and name from text : The code for this can be viewed at **excalibur/botapi/name_add_desc_separator.py**. Here regex and NLP is being used to extract the location and name of the person who has complained.
 5. Text Classification : The code can be viewed at **excalibur/botapi/textClassification.py**. NLP is used to extract meaning of words, sentences in the message/post. A matrix of vectors is then classified using LogisticClassification.
 6. Integration : The integration of the bots with the model and backend can be viewed in **excalibur/botapi/mainExcalibur.py**.
+
+##### The code ("Code") in this repository was created solely by the student teams during a coding competition hosted by JPMorgan Chase Bank, N.A. ("JPMC").						JPMC did not create or contribute to the development of the Code.  This Code is provided AS IS and JPMC makes no warranty of any kind, express or implied, as to the Code,						including but not limited to, merchantability, satisfactory quality, non-infringement, title or fitness for a particular purpose or use.
